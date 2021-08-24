@@ -1,0 +1,17 @@
+/* css */
+body{
+    background-color: yellowgreen;
+}
+
+h1{
+    color: white;
+}
+
+.form,
+.gretting{
+    display: none;
+}
+
+.showing{
+    display: block;
+}
