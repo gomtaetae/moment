@@ -6,15 +6,18 @@ body{
 
 input{
     border: none;
-    background: transparent;
+    background: transparent;    /*input창 투명화*/
     font-size: 30px;
     color: white;
-    text-align: center;
+    margin: 15px;
+    outline: none;
+    
 }
 
 input::placeholder{
     color: rgb(218, 218, 218);
 }
+
 
 .showing{
     display: block;
@@ -45,12 +48,22 @@ input::placeholder{
 }
 
 .js-toDo{
-    align-items: flex-end;
-    padding: 5px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;    /*오른쪽 하단 아래 정렬(position부터 bottom까지*/
+    margin: 5px;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .js-toDoList{
-    font-size: 50px;
+    font-size: 20px;
+}
+
+.js-toDoBt{
+    position: absolute;
+    right:0px;
+    bottom:300px;
 }
 
 .js-weather{

@@ -1,7 +1,9 @@
 const toDoForm = document.querySelector(".js-toDoForm"),
+    toDo = document.querySelector(".js-toDo");
     toDoInput = toDoForm.querySelector("input"),
     toDoList = document.querySelector(".js-toDoList");
-
+    toDoBt = document.querySelector("button");
+    
 const TODOS_LS = 'toDos';
 
 //데이터를 삭제후 재할당이 필요하므로 let을 사용했다.
@@ -13,6 +15,8 @@ function filterFn(toDo){
     return toDo.id === 1;
 }
 */
+
+
 
 function deleteToDo(event){
     //console.log(event.target.parentNode); //log를 이용해 삭제되어야할 정보를 찾는다. li 전체를 지워야함
@@ -32,7 +36,7 @@ function deleteToDo(event){
 
 function saveToDos(){
     //자바스크립트는 localStorage에 있는 모든 데이터를 string으로 저장하려고 한다.
-    //object 대신 string으로 저장해주기위해 JSON.stringify를 사용한다
+    //string을 object로 저장해주기위해 JSON.stringify를 사용한다
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
@@ -75,7 +79,7 @@ function loadToDos(){
     if(loadedToDos !== null){
         //console.log(loadedToDos);
         //loadedToDos를 log로 보면 string 값으로 출력된다.
-        //string 대신 object로 변환 시켜주기위해 JSON.parse를 사용했다.
+        //object를 string으로 변환 시켜주기위해 JSON.parse를 사용했다.
         const parsedToDos = JSON.parse(loadedToDos);
         //console.log(parsedToDos);
         //forEach로 array에 있는 것들을 각각 한번씩 함수를 실행시켜준다.
@@ -84,9 +88,28 @@ function loadToDos(){
         });
     }
 }
+
+function onDisplay(){
+    //처음에 showId에 const를 사용해 계속 오류가 났다.
+    //getElementByClassName에서는 style을 찾을 수 없다하여서 getElementById를 사용하였다.
+    //안되는이유를 찾지못함....
+    let showId = document.getElementById("showDisplay").style.display;
+    if(showId === "none"){
+        showId = "block";
+        document.getElementById("showDisplay").style.display = showId;
+    }else{
+        showId = "none";
+        document.getElementById("showDisplay").style.display = showId;
+    }
+    console.log(showId);
+    
+
+}
+
 function init(){
     loadToDos();
     toDoForm.addEventListener("submit", handleSubmit);
+    toDoBt.addEventListener("click", onDisplay);
 }
 
 init();
