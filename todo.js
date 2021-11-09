@@ -32,7 +32,7 @@ function deleteToDo(event){
 
 function saveToDos(){
     //자바스크립트는 localStorage에 있는 모든 데이터를 string으로 저장하려고 한다.
-    //string 대신 object로 저장해주기위해 JSON.stringify를 사용한다?(반대인거 같음)
+    //object 대신 string으로 저장해주기위해 JSON.stringify를 사용한다
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
@@ -73,11 +73,11 @@ function someThing(toDo){
 function loadToDos(){
     const loadedToDos = localStorage.getItem(TODOS_LS);
     if(loadedToDos !== null){
-        console.log(loadedToDos);
+        //console.log(loadedToDos);
         //loadedToDos를 log로 보면 string 값으로 출력된다.
         //string 대신 object로 변환 시켜주기위해 JSON.parse를 사용했다.
         const parsedToDos = JSON.parse(loadedToDos);
-        console.log(parsedToDos);
+        //console.log(parsedToDos);
         //forEach로 array에 있는 것들을 각각 한번씩 함수를 실행시켜준다.
         parsedToDos.forEach(function(toDo){
             paintToDo(toDo.text);

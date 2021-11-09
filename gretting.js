@@ -1,6 +1,6 @@
-const form = document.querySelector(".js-form"),
-      input = form.querySelector("input"),
-      gretting = document.querySelector(".js-gretting");
+const gtForm = document.querySelector(".js-name"),
+      gtInput = gtForm.querySelector("input"),
+      gretting = document.querySelector(".js-name");
 
 const USER_LS = "currentUser",
     SHOWING_CN = "showing";
@@ -11,18 +11,18 @@ function saveName(name){
 
 function handleSubmit(event){
     event.preventDefault();
-    const currentValue = input.value;
+    const currentValue = gtInput.value;
     paintGretting(currentValue);
     saveName(currentValue);
 }
 
 function askForName(){
-    form.classList.add(SHOWING_CN);
-    form.addEventListener("submit", handleSubmit);
+    gtForm.classList.add(SHOWING_CN);
+    gtForm.addEventListener("submit", handleSubmit);
 }
 
 function paintGretting(text){
-    form.classList.remove(SHOWING_CN);
+    gtForm.classList.remove(SHOWING_CN);
     gretting.classList.add(SHOWING_CN);
     gretting.innerText = `Hello ${text}`;
 }

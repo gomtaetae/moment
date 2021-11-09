@@ -1,20 +1,61 @@
 /* css */
 body{
     background-color: black;
-}
-h1{
     color: white;
 }
 
-.form,
-.gretting{
-    display: none;
+input{
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+input::placeholder{
+    color: rgb(218, 218, 218);
 }
 
 .showing{
     display: block;
 }
 
+.main{
+    display: flex;
+    justify-content: center;    /*위아래 중앙배치*/
+    align-items: center; 
+    min-height: 100%;           /*좌우 중앙배치*/
+    /*grid 사용시
+    display: grid;
+    place-items: center;
+    */
+    width: 100%;
+    position: absolute;
+    flex-direction: column;
+}
+
+.js-clock{
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.js-name{
+    margin: 1%;
+    font-size: 70px;
+}
+
+.js-toDo{
+    align-items: flex-end;
+    padding: 5px;
+}
+
+.js-toDoList{
+    font-size: 50px;
+}
+
+.js-weather{
+
+}
 
 .bgImage{
     position: absolute;
