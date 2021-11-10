@@ -89,22 +89,22 @@ function loadToDos(){
     }
 }
 
+
 function onDisplay(){
     //처음에 showId에 const를 사용해 계속 오류가 났다.
-    //getElementByClassName에서는 style을 찾을 수 없다하여서 getElementById를 사용하였다.
+    //getElementByClassName에서는 style을 찾을 수 없다하여서 getElementById를 사용하였다. -> 다시 querySelector로 바꿈
     //안되는이유를 찾지못함....
-    let showId = document.getElementById("showDisplay").style.display;
-    if(showId === "none"){
-        showId = "block";
-        document.getElementById("showDisplay").style.display = showId;
-    }else{
-        showId = "none";
-        document.getElementById("showDisplay").style.display = showId;
-    }
+    let showId = document.querySelector(".js-toDo").style.opacity;  //display대신 opacity를 사용해 ease-in-out 효과를 적용
     console.log(showId);
-    
-
+    if(showId === ""){      //""을 none으로 설정해주면 새로고침시 두번클릭해야 작동한다
+        showId = "1";
+        document.querySelector(".js-toDo").style.opacity = showId;
+    }else{
+        showId = "";
+        document.querySelector(".js-toDo").style.opacity = showId;
+    }
 }
+
 
 function init(){
     loadToDos();

@@ -11,11 +11,15 @@ input{
     color: white;
     margin: 15px;
     outline: none;
-    
 }
 
 input::placeholder{
     color: rgb(218, 218, 218);
+}
+
+button{
+    border: none;
+    border-radius: 5px;
 }
 
 
@@ -47,23 +51,29 @@ input::placeholder{
     font-size: 70px;
 }
 
+.js-toDoBt{
+    position: absolute;
+    right:0px;
+    bottom:85px;
+    margin: 5px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
 .js-toDo{
     position: absolute;
     right: 0px;
     bottom: 0px;    /*오른쪽 하단 아래 정렬(position부터 bottom까지*/
     margin: 5px;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 10px;    
+    opacity: 0;     /*display를 사용하면 animation으로 fadeIn과 fadeOut을 따로 설정해야하는데 어려워서 opacity를 사용하였다.*/
+    transition: opacity 0.5s ease-in-out;
 }
 
 .js-toDoList{
     font-size: 20px;
-}
-
-.js-toDoBt{
-    position: absolute;
-    right:0px;
-    bottom:300px;
 }
 
 .js-weather{
