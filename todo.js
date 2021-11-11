@@ -3,12 +3,16 @@ const toDoForm = document.querySelector(".js-toDoForm"),
     toDoInput = toDoForm.querySelector("input"),
     toDoList = document.querySelector(".js-toDoList");
     toDoBt = document.querySelector("button");
-    
+
+
 const TODOS_LS = 'toDos';
+
+const CHKBOX = 'chkList';
 
 //데이터를 삭제후 재할당이 필요하므로 let을 사용했다.
 let toDos = [];
-
+// let chkList = toDoList.children[0]
+// console.log(chkList);
 /*
 //filterFn는 toDo의 id가 1인 li를 필터링 하는 테스트용 함수
 function filterFn(toDo){
@@ -16,7 +20,19 @@ function filterFn(toDo){
 }
 */
 
+function checkBox(event){
+    event.target.parentElement.classList.toggle("strikeout");
+    // const clickBox = event.target.parentElement;    //span의 부모 li
+    // const checkValue = clickBox.classList.toggle("strikeout");
+    
+}
 
+// const saved = localStorage.getItem(TODOS_LS);
+// if(saved){
+//     const parsed  = JSON.parse(saved);
+//     toDos = parsed;
+//     parsed.forEach(paintToDo);
+// }
 
 function deleteToDo(event){
     //console.log(event.target.parentNode); //log를 이용해 삭제되어야할 정보를 찾는다. li 전체를 지워야함
@@ -45,9 +61,14 @@ function paintToDo(text){
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newId = toDos.length + 1;
+    const chkBtn = document.createElement("input");     //input을 생성
+    chkBtn.setAttribute("type", "checkbox");            //생성한 input에 type="checkbox" 추가
+    chkBtn.setAttribute("class", "btn-chk");            //class="btn-chk"를 추가
     delBtn.innerText = "❌";
     delBtn.addEventListener("click", deleteToDo);
+    chkBtn.addEventListener("click", checkBox);
     span.innerText = text;
+    li.appendChild(chkBtn);     //li 추가시 checkbox, text, delButton을 같이생성
     li.appendChild(span);
     li.appendChild(delBtn);
     li.id = newId;
@@ -56,6 +77,7 @@ function paintToDo(text){
         text: text,
         id: newId 
     };
+    
     toDos.push(toDoObj);
     saveToDos(); 
 }
@@ -95,13 +117,11 @@ function onDisplay(){
     //getElementByClassName에서는 style을 찾을 수 없다하여서 getElementById를 사용하였다. -> 다시 querySelector로 바꿈
     //안되는이유를 찾지못함....
     let showId = document.querySelector(".js-toDo").style.opacity;  //display대신 opacity를 사용해 ease-in-out 효과를 적용
-    console.log(showId);
+
     if(showId === ""){      //""을 none으로 설정해주면 새로고침시 두번클릭해야 작동한다
-        showId = "1";
-        document.querySelector(".js-toDo").style.opacity = showId;
+        document.querySelector(".js-toDo").style.opacity = "1";
     }else{
-        showId = "";
-        document.querySelector(".js-toDo").style.opacity = showId;
+        document.querySelector(".js-toDo").style.opacity = "";
     }
 }
 
